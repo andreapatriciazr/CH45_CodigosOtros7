@@ -1,39 +1,44 @@
-public class Código7 {
+import java.util.HashMap; // importar HashMap
+import java.util.Scanner; // importar Scanner
 
-    Scanner s = new Scanner();
+public class Codigo7 { 
 
-    HashMap<Byte, Double> ca = new HashMap<>();
+    public static void main(String[] args) { 
+        Scanner s = new Scanner(System.in); // crear para entrada
 
-    capitales.put("Canadá", "Otawwa");
-    capitales.put("Estados Unidos", "Washington DC");
-    capitales.put("México", "México DF");
-    capitales.put("Belice", "Belmopán");
-    capitales.put("Costa rica", "San José");
-    capitales.put("El Salvador");
-    capitales.put("Guatemala", "Ciudad de Guatemala");
-    capitales.put("Honduras", "Tegucigalpa");
-    capitales.put("Nicaragua", "Managua");
-    capitales.put("Panamá", "Panamá");
-   
-    Sting c = "";
+        HashMap<String, String> capitales = new HashMap<>(); // definir que son strings (corregir tipo de dato)
 
-    do {
-      System.in.print("Escribe el nombre de un país y te diré su capital: ");
-      c = s.nextDouble();
-      
-      if (!c.equal("salir")) {
-        if (ca.containsValue(c)) {
-          System.print("La capital de " + c);
-          System.out.println(" es " + ca.put(c));
-        } else {
-          System.out.print("No conozco la respuesta ");
-          System.out.print("¿cuál es la capital de " + c + "?: ");
-          String ca = s.nextLine();
-          ca.put(c, ca);
-          System.out.println("Gracias por enseñarme nuevas capitales");
-        }
-      }
-    } wile (!c.equals("salir");
-  }
+        // corregir ortografía general de las capitales
+        capitales.put("Canadá", "Ottawa"); // corregir "Ottawa"
+        capitales.put("Estados Unidos", "Washington DC");
+        capitales.put("México", "Ciudad de México"); // corregir "Ciudad de México"
+        capitales.put("Belice", "Belmopán");
+        capitales.put("Costa Rica", "San José"); // corregir "Costa Rica"
+        capitales.put("El Salvador", "San Salvador"); // agregar "San Salvador"
+        capitales.put("Guatemala", "Ciudad de Guatemala");
+        capitales.put("Honduras", "Tegucigalpa");
+        capitales.put("Nicaragua", "Managua");
+        capitales.put("Panamá", "Panamá");
 
-}
+        String c = ""; // corregir ortografia
+
+        do {
+            System.out.print("Escribe el nombre de un país y te diré su capital: "); // corregir sysout
+            c = s.nextLine(); // cambiarlo para poder leer el input string
+
+            if (!c.equals("salir")) {  // corregir otrografia equals
+                if (capitales.containsKey(c)) { // corregir key en lugar de values
+                    System.out.println("La capital de " + c + " es " + capitales.get(c)); // utilizar get
+                } else {
+                    System.out.print("No conozco la respuesta."); // salida correcta
+                    System.out.print("¿cuál es la capital de " + c + "?: ");
+                    String nuevaCapital = s.nextLine(); // definir que es una nueva capital
+                    capitales.put(c, nuevaCapital); // utilizar put
+                    System.out.println("Gracias por enseñarme nuevas capitales");
+                }
+            }
+        } while (!c.equals("salir")); // corregir estructura de while
+
+        s.close(); // cerrar el scanner al final
+    } // main
+} // class Codigo7
